@@ -1,6 +1,6 @@
 int d = 690; //diameter
-float z = 100.0; //starting number of points
-float f = 2.0; //factor
+float z = 100.0; //number of points
+float f = 2.0; //multiplication factor
 
 void setup()
 {
@@ -19,9 +19,9 @@ void draw()
   colorMode(HSB, r);
   for(int n = 0; n < z * f; n++)
   {
-    float x = r * cos((PI * n) / z);
+    float x = r * cos((PI * n) / z) * -1;
     float y = r * sin((PI * n) / z) * -1;
-    float x1 = r * cos((PI * (n * f) / z));
+    float x1 = r * cos((PI * (n * f) / z)) * -1;
     float y1 = r * sin((PI * (n * f) / z)) * -1;
     float delta = dist(x, y, x1, y1);
     stroke(delta / 2, r, r);
@@ -44,7 +44,13 @@ void keyPressed()
   }
 }
 
-
-  void mouseWheel(MouseEvent event){
-   d = constrain(d + event.getCount() * 10, -1, 1000000000);
-  }
+void mouseWheel(MouseEvent event)
+{
+  d = d + event.getCount() * 10;
+}
+  
+  
+  
+  
+  
+  
